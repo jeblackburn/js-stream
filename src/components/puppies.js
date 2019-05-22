@@ -6,10 +6,14 @@ export function Puppies() {
     let [puppiesUrl, setUrl] = useState();
 
     useEffect(() => {
+        console.log('Subscribe puppies');
         subscribe(topics.PUPPIES, setUrl);
 
-        return () => unsubscribe(topics.PUPPIES, setUrl);
-    }, [puppiesUrl])
+        return () => {
+            console.log('Unsubscribe puppies');
+            unsubscribe(topics.PUPPIES, setUrl);
+        }
+    }, []);
 
     return (
         <div id="puppies">
@@ -27,7 +31,7 @@ export function PuppiesUrls() {
         <div id="puppies-urls">
             <ul>
                 {urlsList.map((url) => (
-                    <li class="url-list-item">{url}</li>
+                    <li key={url} className="url-list-item">{url}</li>
                 ))}
             </ul>
         </div>

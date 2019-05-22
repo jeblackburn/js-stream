@@ -25,7 +25,7 @@ export function KittensUrls() {
         <div id="kittens-urls">
             <ul>
                 {urlsList.map((url) => (
-                    <li class="url-list-item">{url}</li>
+                    <li key={url} className="url-list-item">{url}</li>
                 ))}
             </ul>
         </div>
