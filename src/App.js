@@ -2,7 +2,6 @@ import React from "react";
 import { Puppies, PuppiesUrls } from './components/puppies';
 import { Kittens, KittensUrls } from './components/kittens';
 import { startImageFeeds, stopImageFeeds } from "./service/imageService";
-import { KittensContainer, PuppiesContainer } from "./containers/beasts";
 
 import './App.css';
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { KittensContainer } from '../containers/beasts';
 import { subscribe } from '../broker/broker';
 import topics from '../broker/topics';
 

@@ -9,11 +9,11 @@ export function Puppies() {
         subscribe(topics.PUPPIES, setUrl);
 
         return () => unsubscribe(topics.PUPPIES, setUrl);
-    })
+    }, [puppiesUrl])
 
     return (
         <div id="puppies">
-            <img alt="Puppies!!!" src={puppiesUrl}/>
+            <img alt="Puppies!!!" src={puppiesUrl} />
         </div>
     )
 }
