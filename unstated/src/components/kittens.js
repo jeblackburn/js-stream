@@ -14,8 +14,10 @@ export function KittensUrls() {
     let [urlsList, setUrlsList] = useState([]);
     let kittenContext = useContext(KittensContext);
     
+    useEffect(() => 
+        kittenContext.kittensUrl && setUrlsList([...urlsList, kittenContext.kittensUrl]), 
+        [kittenContext.kittensUrl]);
 
-    useEffect(() => setUrlsList([...urlsList, kittenContext.kittensUrl]), []);
     return (
         <div id="kittens-urls">
             <ul>

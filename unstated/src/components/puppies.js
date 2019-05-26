@@ -3,7 +3,6 @@ import { PuppiesContext } from '../containers/contexts';
 
 export function Puppies() {
     let puppiesUrl = useContext(PuppiesContext);
-    console.log('XXXX', puppiesUrl);
     return (
         <div id="puppies">
             <img alt="Puppies!!!" src={puppiesUrl.puppiesUrl} />
@@ -15,10 +14,9 @@ export function PuppiesUrls() {
     let [urlsList, setUrlsList] = useState([]);
     let puppiesContext = useContext(PuppiesContext);
 
-    useEffect(() => {
-        puppiesContext.puppiesUrl &&
-            setUrlsList([...urlsList, puppiesContext.puppiesUrl]); 
-        }, []);
+    useEffect(() => 
+        puppiesContext.puppiesUrl && setUrlsList([...urlsList, puppiesContext.puppiesUrl]), 
+        [puppiesContext.puppiesUrl]);
     
     return (
         <div id="puppies-urls">

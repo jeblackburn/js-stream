@@ -22,23 +22,28 @@ function publishDogUrl() {
     messageSink && messageSink({newUrl: dogUrl, type: PUPPIES});
 }
 
-export function startImageFeeds() {
-    publishCatUrl();
-    catFeed = setInterval(() => {
+export const ImageService = {
+    startImageFeeds() {
+        if (catFeed || dogFeed) return;
         publishCatUrl();
-    }, 2000);
-    publishDogUrl();
-    dogFeed = setInterval(() => {
+        catFeed = setInterval(() => {
+            publishCatUrl();
+        }, 2000);
         publishDogUrl();
-    }, 2000);
-}
+        dogFeed = setInterval(() => {
+            publishDogUrl();
+        }, 2000);
+    },
 
-export function stopImageFeeds() {
-    console.log('Killing image feeds');
-    clearInterval(catFeed);
-    clearInterval(dogFeed);
-}
+    stopImageFeeds() {
+        console.log('Killing image feeds');
+        clearInterval(catFeed);
+        clearInterval(dogFeed);
+        catFeed = null;
+        dogFeed = null;
+    },
 
-export function setConsumer(consumer) {
-    messageSink = consumer;
+    setConsumer(consumer) {
+        messageSink = consumer;
+    }
 }
