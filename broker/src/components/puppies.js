@@ -18,6 +18,7 @@ export function Puppies() {
     return (
         <div id="puppies">
             <img alt="Puppies!!!" src={puppiesUrl} />
+            {puppiesUrl}
         </div>
     )
 }

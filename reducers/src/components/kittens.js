@@ -6,6 +6,7 @@ export function Kittens() {
     return (
         <div id="kittens">
             <img alt="Kittens!!!" src={kittensUrl}></img>
+            {kittensUrl}
         </div>
     );
 }
