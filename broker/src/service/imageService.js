@@ -1,6 +1,7 @@
 import { publish } from '../broker/broker';
 import topics from '../broker/topics';
 
+
 let catFeed;
 let dogFeed;
 
@@ -13,12 +14,14 @@ function getRandomInt(min, max) {
 function publishCatUrl() {
     const width = getRandomInt(100, 1000);
     const height = getRandomInt(100, 1000);
-    let catUrl = `https://placekitten.com/${width}/${height}`;
+    let catUrl = `https://placekitten.com/${Math.min(width, height)}/${Math.max(width,height)}`;
     publish(topics.KITTENS, catUrl);
 }
 
 function publishDogUrl() {
-    let dogUrl = `http://place-puppy.com/${getRandomInt(100, 1200)}x${getRandomInt(100, 1200)}`;
+    let width = getRandomInt(100, 1200);
+    let height = getRandomInt(100, 1200);
+    let dogUrl = `http://place-puppy.com/${Math.min(width, width)}x${Math.max(width, height)}`;
     publish(topics.PUPPIES, dogUrl);
 }
 
