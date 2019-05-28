@@ -2,7 +2,8 @@ import { KITTENS, PUPPIES } from '../topics';
 
 let catFeed;
 let dogFeed;
-let messageSink;
+let kittensSink;
+let puppiesSink;
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -14,12 +15,12 @@ function publishCatUrl() {
     const width = getRandomInt(100, 1000);
     const height = getRandomInt(100, 1000);
     let catUrl = `https://placekitten.com/${width}/${height}`;
-    messageSink && messageSink({ newUrl: catUrl, type: KITTENS });
+    kittensSink && kittensSink({ newUrl: catUrl, type: KITTENS });
 }
 
 function publishDogUrl() {
     let dogUrl = `http://place-puppy.com/${getRandomInt(100, 1200)}x${getRandomInt(100, 1200)}`;
-    messageSink && messageSink({newUrl: dogUrl, type: PUPPIES});
+    puppiesSink && puppiesSink({newUrl: dogUrl, type: PUPPIES});
 }
 
 export const ImageService = {
@@ -43,7 +44,11 @@ export const ImageService = {
         dogFeed = null;
     },
 
-    setConsumer(consumer) {
-        messageSink = consumer;
+    setKittensConsumer(kittensConsumer) {
+        kittensSink = kittensConsumer;
+    },
+
+    setPuppiesConsumer(puppiesConsumer) {
+        puppiesSink = puppiesConsumer;
     }
 }

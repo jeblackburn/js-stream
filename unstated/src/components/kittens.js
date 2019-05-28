@@ -15,7 +15,10 @@ export function KittensUrls() {
     let kittenContext = useContext(KittensContext);
     
     useEffect(() => 
-        kittenContext.kittensUrl && setUrlsList([...urlsList, kittenContext.kittensUrl]), 
+        {
+            console.log(kittenContext);
+            kittenContext.kittensUrl && setUrlsList([...urlsList, kittenContext.kittensUrl]);
+        }, 
         [kittenContext.kittensUrl]);
 
     return (
